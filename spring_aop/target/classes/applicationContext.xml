@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+     http://www.springframework.org/schema/aop
+     http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+    <!--配置目标对象-->
+    <bean id="target" class="com.fan.aopStudy.aop.Target"></bean>
+
+    <!--配置切面对象-->
+    <bean id="myAspect" class="com.fan.aopStudy.aop.MyAspect"></bean>
+
+    <!--配置织入-->
+    <aop:config>
+        <!--声明切面-->
+        <aop:aspect ref="myAspect">
+
+            <!--抽取切点表达式-->
+            <aop:pointcut id="myPointcut" expression="execution(* com.fan.aopStudy.aop.*.*(..))"/>
+            <!--切面 = 切点 + 通知-->
+<!--            <aop:before method="before" pointcut="execution(public void com.fan.aopStudy.aop.Target.save())"></aop:before>-->
+<!--            <aop:before method="before" pointcut="execution(* com.fan.aopStudy.aop.*.*(..))"></aop:before>-->
+<!--            <aop:after-returning method="afterReturning" pointcut="execution(* com.fan.aopStudy.aop.*.*(..))"></aop:after-returning>-->
+
+            <aop:around method="around" pointcut-ref="myPointcut"></aop:around>
+        </aop:aspect>
+    </aop:config>
+</beans>
