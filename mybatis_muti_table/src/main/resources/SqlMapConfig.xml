@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+    <properties resource="jdbc.properties"></properties>
+
+    <typeAliases>
+        <typeAlias type="com.fan.mutiTable.domain.User" alias="user"/>
+        <typeAlias type="com.fan.mutiTable.domain.Order" alias="order"/>
+        <typeAlias type="com.fan.mutiTable.domain.SysUser" alias="sysUser"/>
+        <typeAlias type="com.fan.mutiTable.domain.SysRole" alias="sysRole"/>
+    </typeAliases>
+    
+    <!--配置数据源环境-->
+    <environments default="dev">
+        <environment id="dev">
+            <transactionManager type="JDBC"></transactionManager>
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!--加载映射文件-->
+    <mappers>
+        <mapper resource="com/fan/mutiTable/mapper/UserMapper.xml"/>
+        <mapper resource="com/fan/mutiTable/mapper/OrderMapper.xml"/>
+        <mapper resource="com/fan/mutiTable/mapper/SysUserMapper.xml"/>
+    </mappers>
+
+</configuration>

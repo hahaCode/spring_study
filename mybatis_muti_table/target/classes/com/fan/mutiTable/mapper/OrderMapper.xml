@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--mybatis映射文件-->
+<mapper namespace="com.fan.mutiTable.mapper.OrderMapper">
+
+    <!--一对多查询-->
+    <resultMap id="orderMap" type="order">
+        <!--指定字段与实体属性的映射关系-->
+
+        <!--主键用id标签 column: 数据表的字段名称  property: 实体order的属性名称-->
+        <id column="oid" property="id"/>
+
+        <!--其他列用result标签-->
+        <result column="ordertime" property="orderTime" />
+        <result column="total" property="total" />
+
+<!--        <result column="uid" property="user.id" />-->
+<!--        <result column="username" property="user.username" />-->
+<!--        <result column="password" property="user.password" />-->
+
+        <!--可以替换上面user的封装 property: 当前实体order的属性名称  javaType: 当前实体order中的属性的类型-->
+        <association property="user" javaType="user">
+            <id column="uid" property="id"/>
+            <result column="username" property="username"/>
+            <result column="password" property="password" />
+        </association>
+    </resultMap>
+    
+    <select id="findAll" resultMap="orderMap">
+        select *, o.id oid from orders o, user u where o.uid=u.id
+    </select>
+
+</mapper>
