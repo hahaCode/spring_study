@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+<!--    <bean id="userDao" class="com.fan.springstudy.UserDaoImpl" init-method="init" destroy-method="destroy"></bean>-->
+
+    <!--factory-method 工厂静态方法实例化-->
+<!--    <bean id="userDaoFactory" class="com.fan.springstudy.factory.StaticFactory" factory-method="getUserDao"></bean>-->
+
+    <!--工厂实例方法实例化-->
+<!--    <bean id="dynamicFactory" class="com.fan.springstudy.factory.DynamicFactory"></bean>-->
+<!--    <bean id="userDaoFactory" factory-bean="dynamicFactory" factory-method="getUserDao"></bean>-->
+
+<!--    <bean id="userDao" class="com.fan.springstudy.UserDaoImpl"></bean>-->
+
+    <bean id="userDao" class="com.fan.springstudy.UserDaoImpl">
+        <property name="stringList">
+            <list>
+                <value>aaa</value>
+                <value>bbb</value>
+                <value>ccc</value>
+            </list>
+        </property>
+
+        <property name="userMap">
+            <map>
+                <entry key="k001" value-ref="user1"></entry>
+                <entry key="k002" value-ref="user2"></entry>
+            </map>
+        </property>
+
+        <property name="properties">
+            <props>
+                <prop key="p1">haha</prop>
+                <prop key="p2">hehe</prop>
+                <prop key="p3">xixi</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="user1" class="com.fan.springstudy.domain.User">
+        <property name="name" value="Tom"/>
+        <property name="address" value="Nanjing"/>
+    </bean>
+
+    <bean id="user2" class="com.fan.springstudy.domain.User">
+        <property name="name" value="Lucy"/>
+        <property name="address" value="Beijing"/>
+    </bean>
+
+    <!--依赖注入-->
+    <!--1. set方法注入-->
+<!--    <bean id="userService" class="com.fan.springstudy.UserServiceImpl">-->
+        <!--属性的name 是来自于UserServiceImpl中 setter访问器的名字去掉"set"并将第一个大写字母改小写, 如"setUserDao" 对应的属性名为 "userDao"-->
+        <!--ref代表引用容器当中的bean的id  代表对象引用-->
+<!--        <property name="userDao" ref="userDao"></property>-->
+<!--    </bean>-->
+
+    <!--2.有参构造注入-->
+    <bean id="userService" class="com.fan.springstudy.UserServiceImpl">
+        <!--name指的是有参构造参数名-->
+        <constructor-arg name="userDao" ref="userDao"> </constructor-arg>
+    </bean>
+</beans>
