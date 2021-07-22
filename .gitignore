@@ -1,1 +1,50 @@
+HELP.md
+.gradle
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### VS Code ###
+.vscode/
+
+
+### Modules ###
+/mybatis_*/target/
+/spring_aop/target/
+/spring_ioc*/target/
+/spring_jdbc/target/
+/spring_mvc/target/
 /spring_mvc_exception/target/
+/spring_mvc_interceptor/target/
+/spring_practice/target/
+/spring_tx_annotation/target/
+/spring_transactions/target/
