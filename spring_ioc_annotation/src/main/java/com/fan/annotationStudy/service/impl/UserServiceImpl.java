@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 //@Component("userService")
 
 @Service("userService")
+//@Service  //测试自定义BeanName生成器
 public class UserServiceImpl implements UserService {
 
     //注入依赖 <property name="userDao" ref="userDao"/>

@@ -16,6 +16,9 @@ public class UserController {
         ApplicationContext app = new AnnotationConfigApplicationContext(SpringConfiguration.class);
         UserService userService = app.getBean(UserService.class);
         userService.save();
+
+        //测试自定义BeanName生成器
+        //UserService userService = app.getBean("myuserServiceImpl", UserService.class);
     }
 }
 
