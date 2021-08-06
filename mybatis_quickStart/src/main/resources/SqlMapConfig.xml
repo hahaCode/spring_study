@@ -6,6 +6,11 @@
     <!--通过properties标签加载外部properties文件-->
     <properties resource="jdbc.properties"></properties>
 
+    <!--设置日志工厂-->
+    <settings>
+        <setting name="logImpl" value="LOG4J"/>
+    </settings>
+
     <!--自定义别名 注意顺序, typeAliases标签不能写在后面-->
     <typeAliases>
         <typeAlias type="com.fan.mybatisStudy.domain.User" alias="user"/>
@@ -49,7 +54,7 @@
 
     <!--加载映射文件-->
     <mappers>
-        <mapper resource="com/fan/mybatisStudy/mapper/UserMapper.xml"/>
+        <mapper resource="com/fan/mybatisStudy/mapper/UserMapper-noproxy.xml"/>
     </mappers>
 
 </configuration>

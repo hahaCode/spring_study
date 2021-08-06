@@ -24,14 +24,38 @@
     
 * Bean实例化的三种方式
   1. 无参构造方法实例化 (默认方式)
+     + 有参构造
+     ```xml
+     <!--根据构造器参数的类型, 如果多个参数是同一类型就不建议使用-->
+     <bean id="exampleBean" class="examples.ExampleBean">
+        <constructor-arg type="int" value="7500000"/>
+        <constructor-arg type="java.lang.String" value="42"/>
+     </bean>
+     
+     <!--根据构造器参数的下标-->
+     <bean id="exampleBean" class="examples.ExampleBean">
+        <constructor-arg index="0" value="7500000"/>
+        <constructor-arg index="1" value="42"/>
+     </bean>
+     
+     <!--根据参数名称来设置-->
+     <bean id="exampleBean" class="examples.ExampleBean">
+        <constructor-arg name="name" value="zhangsan"/>
+        <constructor-arg age="age" value="42"/>
+     </bean>
+     ``` 
   2. 工厂静态方法实例化
   3. 工厂实例方法实例化  
     
-* Bean的依赖注入
-  1. 概念: 依赖注入是Spring框架核心IOC的具体实现
+* Bean的依赖注入 
+  1. 概念: 依赖注入是Spring框架核心IOC的具体实现, bean对象的创建依赖于容器, bean对象中的
+           所有属性由容器来注入
   2. 方式:
      + set方法注入
      + 构造方法注入
+     + 其他方法注入(p,c命名空间不能直接使用, 需要到入xml约束)
+       - p命名空间 简化set方法注入
+       - c命名空间 简化有参构造方法注入
     
   3. 注入数据的三种数据类型
      + 普通数据类型
@@ -66,6 +90,19 @@
                 <prop key="p3">xixi</prop>
             </props>
         </property>
+     
+        <!--数组类型-->
+        <property name="books">
+            <array>
+                <value>西游记</value>
+                <value>三国演义</value>
+            </array>
+        </property>
+     
+        <!--null-->
+        <property name="email">
+            <null/>
+        </property>
       </bean>   
       ```
 
@@ -99,7 +136,13 @@
   1. 注意: 使用注解进行开发时, 需要在applicationContext.xml中配置组件扫描, 作用是指定哪个包及其子包下的Bean
      需要进行扫描以便识别使用注解配置的类, 字段, 和方法
      ![注解1](./imgs/annotations.jpg)
-     ![注解2](./imgs/annotation2.jpg)     
+     ![注解2](./imgs/annotation2.jpg)  
+     
+  2. 一点小思考
+     + @Resource(java自带的) 和 @Autowired(Spring自带)的比较
+       1. 都是用来自动装配的, 都可以放在属性字段上
+       2. @Autowired 根据type进行匹配, 要求这个对象已经存在
+       3. @Resource 优先通过name进行匹配, 如果name找不到就通过type进行匹配, 两个都找不到就报错
 
 ###Spring集成Web环境
 

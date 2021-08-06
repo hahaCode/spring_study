@@ -48,3 +48,5 @@ out/
 /spring_practice/target/
 /spring_tx_annotation/target/
 /spring_transactions/target/
+
+*.log
