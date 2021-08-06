@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+    <!--自定义别名 注意顺序, typeAliases标签不能写在后面-->
+    <typeAliases>
+        <typeAlias type="com.fan.spring_mybatis.domain.User" alias="user"/>
+    </typeAliases>
+
+
+    <!--加载映射文件-->
+    <mappers>
+        <mapper resource="com.fan.spring_mybatis.mapper/UserMapper.xml"/>
+    </mappers>
+
+</configuration>
