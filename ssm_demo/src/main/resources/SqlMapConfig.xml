@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+    <!--设置日志工厂-->
+    <settings>
+        <setting name="logImpl" value="LOG4J"/>
+    </settings>
+
+    <!--配置数据源交给spring去做, mybatis这里就不写了-->
+
+    <typeAliases>
+        <!--这个包下面的类都用生成的别名-->
+        <package name="com.fan.ssmdemo"/>
+    </typeAliases>
+
+    <mappers>
+        <mapper resource="com.fan.ssmdemo.mapper/BookMapper.xml"/>
+    </mappers>
+</configuration>

@@ -28,12 +28,9 @@
     <!--    配置拦截器-->
     <mvc:interceptors>
         <mvc:interceptor>
-            <mvc:mapping path="/**"/> <!--表示对哪些资源进行拦截操作-->
+            <mvc:mapping path="/**"/> <!--表示对哪些资源进行拦截操作   /** 表示这个请求下面的所有请求-->
             <bean class="com.fan.interceptorStudy.interceptors.MyInterceptor_1"></bean>
         </mvc:interceptor>
-    </mvc:interceptors>
-
-    <mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping path="/**"/> <!--表示对哪些资源进行拦截操作-->
             <bean class="com.fan.interceptorStudy.interceptors.MyInterceptor_2"></bean>

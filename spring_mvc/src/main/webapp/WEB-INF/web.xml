@@ -18,6 +18,10 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>DispatcherServlet</servlet-name>
+        <!--
+        /: 匹配所有的请求, 但不包含jsp
+        /*: 匹配所有的请求, 包括jsp
+        -->
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 

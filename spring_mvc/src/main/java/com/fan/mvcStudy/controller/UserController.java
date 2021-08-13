@@ -18,6 +18,7 @@ import java.util.Date;
 import java.util.List;
 
 @Controller
+//@RestController  //如果用@RestController就相当于在方法上加了@ResponseBody 不进行视图跳转, 直接进行数据响应
 @RequestMapping("/user")
 public class UserController {
 
@@ -95,6 +96,7 @@ public class UserController {
     @RequestMapping("/show10")
     @ResponseBody
     //http://localhost:8080/spring_mvc/user/show10?name=bob&age=12
+    //表单域和对象的属性名一致, 参数可以直接使用对象接收
     public void show10(User user) {
         System.out.println(user);
     }
